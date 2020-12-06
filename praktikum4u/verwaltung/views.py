@@ -4,7 +4,7 @@ from django.http import HttpRequest, Http404
 from .models import *
 from django.contrib.auth.models import User
 from praktikum4u import settings
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import check_password, make_password
 
 
 
@@ -13,20 +13,37 @@ from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 def index(request):
-    template = 'landingpage/index.html'
-    return render(request,template,{})
+    if request.method == "GET":
+        template = 'landingpage/index.html'
+        return render(request,template,{})
+    else:
+        user = request.POST['username']
+        pw = request.POST['pw']
+        if pw != '' and user != '':
+            suche = User.objects.get(username=user)
+            richtig = check_password(pw,suche.password)
+            if richtig:
+                template = 'sites/eingeloggt.html'
+                return render(request,template,{'user':user})
+            else:
+                template = 'landingpage/index.html'
+                bitte = "Bitte Login Prüfen!"
+                return render(request,template,{'bitte':bitte})
+        else:
+            template = 'landingpage/index.html'
+            bitte = "Bitte Login Prüfen!"
+            return render(request,template,{'bitte':bitte})
 
 def impressum(request):
     template = 'sites/impressum.html'
     return render(request,template,{})
 
+
 def reg(request):
     template = 'sites/register.html'
     ds = User.objects.all()
-    print(request.POST)
     if request.method == "GET":
-        return render(request,template,{})
-        
+        return render(request,template,{})        
     else:
         button = request.POST['button']
         if button == "save":
@@ -45,7 +62,9 @@ def reg(request):
                                 if email != '':
                                     ds = User(username=username,first_name=first_name,last_name=last_name,email=email,password=psw2)
                                     ds.save()
-                                    return render(request,template,{})
+                                    template = 'sites/danke.html'
+                                    return render(request,template,{})        
+                                    
                                 else:
                                     bitte = "Bitte E-Mail eingeben!"
                                     return render(request,template,{'bitte':bitte})                        
@@ -62,15 +81,12 @@ def reg(request):
                     bitte = "Die Passwörter stimmen nicht überein!"
                     return render(request,template,{'bitte':bitte})
             elif 'dtsch' in request.POST:
-                print("Nutzungsbedinungen fehlen!")
                 bitte = "Bitte Akzeptieren sie die Nutzungsbedingungen!"
                 return render(request,template,{'bitte':bitte})
             elif 'ntzb' in request.POST:
-                print("Datenschutz Akzeptieren bitte!")
                 bitte = "Bitte den Datenschutz Akzeptieren!"
                 return render(request,template,{'bitte':bitte})
             else:
-                print("Nix")
                 bitte = "Bitte Akzeptieren sie die Nutzungsbedingungen sowie den Datenschutz!"
                 return render(request,template,{'bitte':bitte})
         elif button == "cancel":

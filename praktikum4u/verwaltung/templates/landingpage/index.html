@@ -56,7 +56,7 @@
                 <div class="navbar-collapse collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item searchBar">
-                          <form class="example" action="action_page.php">
+                          <form class="example" method="" action="">
                             <input type="text" placeholder="Search.." name="search">
                             <button type="submit"><i class="fa fa-search"></i></button>
                           </form>
@@ -89,25 +89,27 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form>
+				<form method="POST">
+        {% csrf_token %}
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="Benutzername"></input>
+						<input type="text" class="form-control" placeholder="Benutzername" name="username">
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="Passwort"></input>
+						<input type="password" class="form-control" placeholder="Passwort" name="pw">
 					</div>
 					<div class="row align-items-center remember">
-						<input type="checkbox">Eingelogt Bleiben</input>
+						<input type="checkbox">Eingelogt Bleiben
 					</div>
+          <p>{{bitte}}</p>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn"></input>
+						<input type="submit" value="Login" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>
