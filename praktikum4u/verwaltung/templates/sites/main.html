@@ -33,11 +33,13 @@
 
 <body>
 
-  <div class="overlay"></div>
+  
   <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
     {% load static %}
     <source src="{% static 'mp4/bg.mp4' %} " type="video/mp4">
   </video>
+
+
 
 
   <!--         Fixed Header      -->
@@ -62,10 +64,10 @@
                           </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#">Home</a>
+                            <a class="nav-link js-scroll-trigger" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#">Info</a>
+                            <a class="nav-link js-scroll-trigger" href="/impressum/">Impressum</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#">Login</a>
@@ -77,83 +79,27 @@
     </div>
 </div>
 
-<div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header">
-				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
-			</div>
-			<div class="card-body">
-				<form>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="text" class="form-control" placeholder="Benutzername"></input>
-						
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input type="password" class="form-control" placeholder="Passwort"></input>
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox">Eingelogt Bleiben</input>
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn"></input>
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Noch nicht Registriert?<a href="#">Hier Anmelden!</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Passwort Vergessen?</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
+<!-- Page Content -->
+  <div class="container">
+  <div class="overlay"></div>
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8 runter">
+        {% block content %}
+        
 
 
-  <div class="social-icons">
-    <ul class="list-unstyled text-center mb-0">
-      <li class="list-unstyled-item">
-        <a href="https://twitter.com/praktikum4u">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-      <li class="list-unstyled-item">
-        <a href="https://www.facebook.com/Praktikum4u-100419631940337">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-      </li>
-      <li class="list-unstyled-item">
-        <a href="https://www.instagram.com/praktikum4u.de/">
-          <i class="fab fa-instagram"></i>
-        </a>
-      </li>
-    </ul>
-  </div>
-
+  {% endblock content %}
   <!-- Bootstrap core JavaScript -->
   {% load static %}
-  <script src="{% static 'vendor/jquery/jquery.min.js' %} "></script>
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   {% load static %}
-  <script src="{% static ' vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-  <!-- Custom scripts for this template -->
-  {% load static %}
-  <script src="{% static 'js/coming-soon.min.js' %} "></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
 
 </body>
 
 </html>
+

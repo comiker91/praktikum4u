@@ -1,1 +1,38 @@
-{% include main %}
+{% extends 'sites/main.html' %} 
+
+{% block title %}
+Impressum Praktikum4U
+{% endblock title %}
+
+{% block content %}
+        <!-- Preview Image -->
+        {% load static %}
+        <img class="img-fluid rounded" src="{% static '/img/logo/logo.png' %}" alt="">
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead"><h1>Impressum</h1></p>
+
+        <p>Bei Praktikum4U handelt es sich um eine Fiktive Firma welche im Rahmen von Ausbildungzwecken, zum erlernen von Programmieren
+        von Websites mittels verwenung von Bootstraps, Django und nutzung von Servern sowie Datenbanken entstanden ist.</p>
+        <p>Praktikum4U steht in keinem zusammenhang mit dem<a href="https://www.bfw-schoemberg.de/"> Berufsförderungswerk Schömberg</a> welches die Ausbildung durchführt</p>
+        <p>In dringenden Fällen sind wir unter <a href="mailto:info@Praktikum4U.de">info[at]Praktikum4U.de</a> zu erreichen!<br />
+         Bitte sehen sie von Geschäfltichen anfragen ab, da es wie bereits geschrieben wurde eine Fiktive Firma handelet welche
+         keinerlei einnahmen generiert und auch nicht möchte</p>
+        <p>Für den Ausbildungsinhalt zuständig: Herr Olier Sigrist Leiter IT-Ausbildung BFW Schömberg Zweigstelle Stuttgart</p>
+        </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+{% endblock content %}
+

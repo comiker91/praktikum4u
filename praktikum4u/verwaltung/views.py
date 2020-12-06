@@ -1,5 +1,6 @@
+from django.http.response import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
-from django.http import HttpRequest
+from django.http import HttpRequest, Http404
 
 # Create your views here.
 def index(request):

@@ -78,3 +78,13 @@ div.newsFeed {
   height: 86%;
   border: none;
 }
+
+.runter {
+  top: 100px;
+  z-index: 2;
+  color: #00d323;
+}
+
+a {
+  color: rgb(59, 187, 59);
+}
