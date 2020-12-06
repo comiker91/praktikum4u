@@ -5,3 +5,7 @@ from django.http import HttpRequest
 def index(request):
     template = 'landingpage/index.html'
     return render(request,template,{})
+
+def impressum(request):
+    template = 'sites/impressum.html'
+    return render(request,template,{})
