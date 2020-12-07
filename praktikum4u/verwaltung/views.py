@@ -65,10 +65,14 @@ def reg(request):
                             if last_name != '':
                                 email = request.POST['email']
                                 if email != '':
-                                    ds = User(username=username,first_name=first_name,last_name=last_name,email=email,password=psw2)
-                                    ds.save()
-                                    template = 'sites/danke.html'
-                                    return render(request,template,{})        
+                                    try:
+                                        ds = User(username=username,first_name=first_name,last_name=last_name,email=email,password=psw2)
+                                        ds.save()
+                                        template = 'sites/danke.html'
+                                        return render(request,template,{})
+                                    except:
+                                        bitte = "Username Bereits Vergeben!"
+                                        return render(request,template,{'bitte':bitte})                     
                                     
                                 else:
                                     bitte = "Bitte E-Mail eingeben!"
