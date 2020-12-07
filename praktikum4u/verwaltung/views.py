@@ -19,19 +19,24 @@ def index(request):
     else:
         user = request.POST['username']
         pw = request.POST['pw']
-        if pw != '' and user != '':
-            suche = User.objects.get(username=user)
-            richtig = check_password(pw,suche.password)
-            if richtig:
-                template = 'sites/eingeloggt.html'
-                return render(request,template,{'user':user})
+        try:
+            if pw != '' and user != '':
+                suche = User.objects.get(username=user)
+                richtig = check_password(pw,suche.password)
+                if richtig:
+                    template = 'sites/eingeloggt.html'
+                    return render(request,template,{'user':user})
+                else:
+                    template = 'landingpage/index.html'
+                    bitte = "Bitte Login Prüfen!"
+                    return render(request,template,{'bitte':bitte})
             else:
                 template = 'landingpage/index.html'
                 bitte = "Bitte Login Prüfen!"
                 return render(request,template,{'bitte':bitte})
-        else:
+        except :
             template = 'landingpage/index.html'
-            bitte = "Bitte Login Prüfen!"
+            bitte = "Bitte Username Prüfen!"
             return render(request,template,{'bitte':bitte})
 
 def impressum(request):
